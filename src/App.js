@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {loadTodos, removeTodo} from "./actions";
+import {checkTodo, loadTodos, removeTodo} from "./actions";
 import Header from "./Header";
 
 function App() {
@@ -16,7 +16,11 @@ function App() {
 
   const handleDelete = (id) => {
       dispatch(removeTodo(id))
-    };
+  };
+
+  const handleCheck = (id, completed) => {
+      dispatch(checkTodo(id, completed))
+  };
 
   return (
       <div className="App">
@@ -26,14 +30,18 @@ function App() {
               return(
                   <div className="todo">
                       <div>
-                          <input type="checkbox"/>
+                          <input
+                              type="checkbox"
+                              checked={todo.completed }
+                              onChange={() => handleCheck(todo.id, todo.completed)}/>
                       </div>
                       <div className="title">
                           {todo.title}
                       </div>
                       <div className="actions">
                           <button
-                              onClick={() => handleDelete(todo.id)} className="btn">
+                              onClick={() => handleDelete(todo.id)}
+                              className="btn">
                               delete
                           </button>
                       </div>
