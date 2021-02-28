@@ -6,7 +6,7 @@ import {useDispatch} from "react-redux";
 function Todo(props) {
     const dispatch = useDispatch();
 
-    const user = props.users.filter(item => item.id === props.todo.userId);
+    const user = props.users.find(item => item.id === props.todo.userId);
 
     const handleDelete = (id) => {
         dispatch(removeTodo(id))
@@ -37,7 +37,7 @@ function Todo(props) {
                 )}
             </div>
             <div className="title">
-                {props.todo.title} ({user[0].email})
+                {props.todo.title} ({user.email})
             </div>
             <div className="actions">
                 <button

@@ -7,6 +7,7 @@ function Todos() {
     const todos = useSelector(state => state.todos);
     const loading = useSelector(state => state.loading);
     const users = useSelector(state => state.users);
+    const usersLoading = useSelector(state => state.usersLoading);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -15,7 +16,7 @@ function Todos() {
     }, []);
 
     return (
-        loading ? 'loading...' : (
+        (loading || usersLoading) ? 'loading...' : (
             todos.map(todo => {
                 return(<Todo key={todo.id} todo={todo} users={users}/>)
             })
