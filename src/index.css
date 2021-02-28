@@ -37,7 +37,9 @@ body {
   cursor: pointer;
 }
 
-
+.spin {
+  margin-left: 3px;
+}
 
 
 
