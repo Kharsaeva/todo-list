@@ -63,7 +63,7 @@ export const removeTodo = (id) => {
     }
 };
 
-export const loadUsers = (id) => {
+export const loadUsers = () => {
     return (dispatch) => {
         dispatch({
             type: USERS_LOAD_START,
